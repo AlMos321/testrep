@@ -1,0 +1,32 @@
+{# src/Blogger/BlogBundle/Resources/views/Page/contact.html.twig #}
+{% extends 'AlmosBundle::layout.html.twig' %}
+
+{% block title %}Contact{% endblock%}
+
+{% block body %}
+    <header>
+        <h1>contact us</h1>
+    </header>
+
+    {% for flashMessage in app.session.flashbag.get('blogger-notice') %}
+        <div class="blogger-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <p>To contact us, please fill in the form below:</p>
+
+    <form action="{{ path('AlmosBundle_contact') }}" method="post" {{ form_enctype(form) }} class="blogger">
+        {{ form_errors(form) }}
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.subject) }}
+        {{ form_row(form.body) }}
+
+        {{ form_rest(form) }}
+
+        <input type="submit" value="Отправить" />
+    </form>
+
+{% endblock %}

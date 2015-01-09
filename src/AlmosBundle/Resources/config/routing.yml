@@ -1,0 +1,34 @@
+AlmosBundle_homepage:
+    pattern:  /
+    defaults: { _controller: AlmosBundle:Page:index }
+    requirements:
+        _method:  GET
+
+AlmosBundle_about:
+    pattern:  /about
+    defaults: { _controller:  AlmosBundle:Page:about }
+    requirements:
+        _method:  GET
+
+
+AlmosBundle_contact:
+    pattern:  /contact
+    defaults: { _controller: AlmosBundle:Page:contact }
+    requirements:
+           _method:  GET|POST
+
+
+AlmosBundle_question_show:
+    pattern:  /{id}
+    defaults: { _controller: AlmosBundle:Question:show }
+    requirements:
+        _method:  GET
+        id: \d+
+
+
+AlmosBundle_comment_create:
+    pattern:  /comment/{question_id}
+    defaults: { _controller: AlmosBundle:Comment:create }
+    requirements:
+        _method:  POST|GET
+        blog_id: \d+

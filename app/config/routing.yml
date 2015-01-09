@@ -1,0 +1,4 @@
+almos_homepage:
+    resource: "@AlmosBundle/Resources/config/routing.yml"
+    prefix:   /
+
