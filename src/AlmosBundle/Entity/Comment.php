@@ -189,10 +189,10 @@ class Comment
     /**
      * Set blog
      *
-     * @param \AlmosBundle\Entity\Blog $blog
+     * @param \AlmosBundle\Entity\Question $blog
      * @return Comment
      */
-    public function setBlog(\AlmosBundle\Entity\Blog $blog = null)
+    public function setBlog(\AlmosBundle\Entity\Question $blog = null)
     {
         $this->blog = $blog;
 
@@ -202,7 +202,7 @@ class Comment
     /**
      * Get blog
      *
-     * @return \AlmosBundle\Entity\Blog 
+     * @return \AlmosBundle\Entity\Question
      */
     public function getBlog()
     {
