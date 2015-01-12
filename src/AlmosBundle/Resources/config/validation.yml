@@ -1,0 +1,4 @@
+AlmosBundle\Entity\Blog:
+    properties:
+        file:
+            - Image: ~

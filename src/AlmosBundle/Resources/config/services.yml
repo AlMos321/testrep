@@ -8,3 +8,15 @@ services:
         class: AlmosBundle\Twig\Extensions\AlmosExtension
         tags:
             - { name: twig.extension }
+
+    blogger.symblog.admin.blog:
+        class: AlmosBundle\Admin\QuestionAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: symblog, label: Blogs }
+        arguments: [null, AlmosBundle\Entity\Question, AlmosBundle:QuestionAdmin]
+
+    blogger.symblog.admin.comment:
+        class: AlmosBundle\Admin\CommentAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: symblog, label: Comments }
+        arguments: [null, AlmosBundle\Entity\Comment, AlmosBundle:CommentAdmin]
