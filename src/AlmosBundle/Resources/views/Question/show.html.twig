@@ -22,7 +22,7 @@
 
         <h3>Add Comment</h3>
 
-        {#{{ render(controller( 'AlmosBundle:Comment:create', { 'question_id': blog.id } )) }}#}
+       {#{{ render(controller( 'AlmosBundle:Comment:create', { 'question_id': blog.id|length } )) }}#}
 
 
     </section>

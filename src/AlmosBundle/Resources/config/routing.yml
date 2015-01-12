@@ -30,5 +30,5 @@ AlmosBundle_comment_create:
     pattern:  /comment/{question_id}
     defaults: { _controller: AlmosBundle:Comment:create }
     requirements:
-        _method:  POST|GET
+        _method:  POST
         blog_id: \d+

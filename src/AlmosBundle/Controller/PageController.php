@@ -61,4 +61,28 @@ class PageController extends Controller
             'form' => $form->createView()
         ));
     }
+
+    public function sidebarAction()
+    {
+        $em = $this->getDoctrine()
+            ->getManager();
+
+        $tags = $em->getRepository('AlmosBundle:Question')
+            ->getTags();
+
+        $tagWeights = $em->getRepository('AlmosBundle:Question')
+            ->getTagWeights($tags);
+
+        $commentLimit   = $this->container
+            ->getParameter('blogger_blog.comments.latest_comment_limit');
+        $latestComments = $em->getRepository('AlmosBundle:Comment')
+            ->getLatestComments($commentLimit);
+
+        return $this->render('AlmosBundle:Page:sidebar.html.twig', array(
+            'latestComments'    => $latestComments,
+            'tags' => $tagWeights
+        ));
+        
+    }
+
 }

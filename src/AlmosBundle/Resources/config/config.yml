@@ -2,3 +2,9 @@
 parameters:
     # Blogger contact email address
     almos.emails.contact_email: alexmoss09@gmail.com
+
+
+    # ..
+
+    # Blogger max latest comments
+    blogger_blog.comments.latest_comment_limit: 10

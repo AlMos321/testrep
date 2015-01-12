@@ -25,11 +25,14 @@ class CommentController extends Controller
         ));
     }
 
+
+
     public function createAction($question_id )
     {
+
         $blog = $this->getBlog($question_id );
 
-        $comment  = new Comment();
+        $comment  = new Comment($blog);
         $comment->setComment($blog);
         $request = $this->getRequest();
         $form    = $this->createForm(new CommentType(), $comment);
@@ -50,12 +53,13 @@ class CommentController extends Controller
         ));
     }
 
-    protected function getBlog($question_id  )
+    protected function getBlog($question_id )
     {
         $em = $this->getDoctrine()
             ->getManager();
 
         $blog = $em->getRepository('AlmosBundle:Question')->find($question_id);
+
 
         if (!$blog) {
             throw $this->createNotFoundException('Unable to find Blog post.');
@@ -63,5 +67,7 @@ class CommentController extends Controller
 
         return $blog;
     }
+
+
 
 }
