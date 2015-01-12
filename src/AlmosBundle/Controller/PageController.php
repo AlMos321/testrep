@@ -49,7 +49,7 @@ class PageController extends Controller
 
                 $this->get('session')->getFlashBag()->add(
                     'blogger-notice',
-                    'Ваш запрос успешно отправлен. Спасибо!');
+                    'Your contact enquiry was successfully sent. Thank you!');
 
                 // Редирект - это важно для предотвращения повторного ввода данных в форму,
                 // если пользователь обновил страницу.
