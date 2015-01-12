@@ -82,7 +82,7 @@ class PageController extends Controller
             'latestComments'    => $latestComments,
             'tags' => $tagWeights
         ));
-        
+
     }
 
 }

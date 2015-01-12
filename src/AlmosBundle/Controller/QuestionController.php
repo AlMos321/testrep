@@ -14,7 +14,7 @@ class QuestionController extends Controller
     /**
      * Show a question entry
      */
-    public function showAction($id)
+    public function showAction($id, $slug)
     {
         $em = $this->getDoctrine()->getManager();
 

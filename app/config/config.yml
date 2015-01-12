@@ -35,7 +35,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
+    bundles:        [AlmosBundle]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -74,3 +74,5 @@ swiftmailer:
     spool:     { type: memory }
    # encryption: "%mailer_encryption%"
    # auth_mode:  "%mailer_auth_mode%"
+
+

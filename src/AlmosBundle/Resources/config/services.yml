@@ -2,3 +2,9 @@ services:
 #    almos.example:
 #        class: AlmosBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+services:
+    blogger_blog.twig.extension:
+        class: AlmosBundle\Twig\Extensions\AlmosExtension
+        tags:
+            - { name: twig.extension }

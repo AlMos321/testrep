@@ -2,10 +2,15 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-    {{ parent() }}
-    <link href="{{ asset('bundles/almos/css/blog.css') }}" type="text/css" rel="stylesheet" />
-    <link href="{{ asset('bundles/almos/css/sidebar.css') }}" type="text/css" rel="stylesheet" />
+    {{ parent () }}
+
+    {% stylesheets
+    '@AlmosBundle/Resources/public/css/*'
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
 {% endblock %}
+
 
 {% block sidebar %}
     {#{% render "AlmosBundle:Page:sidebar" %}#}

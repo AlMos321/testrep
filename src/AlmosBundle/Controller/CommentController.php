@@ -41,8 +41,15 @@ class CommentController extends Controller
         if ($form->isValid()) {
             // TODO: Persist the comment entity
 
-            return $this->redirect($this->generateUrl('AlmosBundle_question_show', array(
+         /*   return $this->redirect($this->generateUrl('AlmosBundle_question_show', array(
                     'id' => $comment->getComment())) .
+                    'slug'  => $comment->getBlog()->getSlug())) .
+                    '#comment-' . $comment->getId()
+            ); */
+
+            return $this->redirect($this->generateUrl('BloggerBlogBundle_blog_show', array(
+                    'id'    => $comment->getBlog()->getId(),
+                    'slug'  => $comment->getBlog()->getSlug())) .
                 '#comment-' . $comment->getId()
             );
         }

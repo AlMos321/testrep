@@ -19,7 +19,7 @@ AlmosBundle_contact:
 
 
 AlmosBundle_question_show:
-    pattern:  /{id}
+    pattern:  /{id}/{slug}
     defaults: { _controller: AlmosBundle:Question:show }
     requirements:
         _method:  GET
