@@ -22,7 +22,17 @@
 
         <h3>Add Comment</h3>
 
-       {#{{ render(controller( 'AlmosBundle:Comment:create', { 'question_id': blog.id|length } )) }}#}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <p>You can leave a comment</p>
+
+
+       {{ render(controller( 'AlmosBundle:Comment:new', { 'blog_id': blog.id } )) }}
+        {% else %}
+            <p style="color: #6b9311">To leave a comment please register or login </p>
+    {% endif %}
+
+
+    {#{{ render(controller( 'AlmosBundle:Comment:create', { 'question_id': blog.id } )) }}#}
 
 
     </section>

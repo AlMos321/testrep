@@ -65,6 +65,7 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
@@ -88,4 +89,8 @@ sonata_block:
         sonata.block.service.action:
         sonata.block.service.rss:
 
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: AlmosBundle\Entity\User
 

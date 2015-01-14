@@ -20,14 +20,14 @@ AlmosBundle_contact:
 
 AlmosBundle_question_show:
     pattern:  /{id}/{slug}
-    defaults: { _controller: AlmosBundle:Question:show }
+    defaults: { _controller: AlmosBundle:Question:show , slug: 'a-day-with-symfony2'}
     requirements:
         _method:  GET
         id: \d+
 
 
 AlmosBundle_comment_create:
-    pattern:  /comment/{question_id}
+    pattern:  /comment/{blog_id}
     defaults: { _controller: AlmosBundle:Comment:create }
     requirements:
         _method:  POST

@@ -11,12 +11,12 @@ use AlmosBundle\Form\CommentType;
  */
 class CommentController extends Controller
 {
-    public function newAction($question_id )
+    public function newAction($blog_id)
     {
-        $blog = $this->getBlog($question_id);
+        $blog = $this->getBlog($blog_id);
 
         $comment = new Comment();
-        $comment->setComment($blog);
+        $comment->setBlog($blog);
         $form   = $this->createForm(new CommentType(), $comment);
 
         return $this->render('AlmosBundle:Comment:form.html.twig', array(
@@ -25,15 +25,12 @@ class CommentController extends Controller
         ));
     }
 
-
-
-    public function createAction($question_id )
+    public function createAction($blog_id)
     {
+        $blog = $this->getBlog($blog_id);
 
-        $blog = $this->getBlog($question_id );
-
-        $comment  = new Comment($blog);
-        $comment->setComment($blog);
+        $comment  = new Comment();
+        $comment->setBlog($blog);
         $request = $this->getRequest();
         $form    = $this->createForm(new CommentType(), $comment);
         $form->Bind($request);
@@ -41,16 +38,15 @@ class CommentController extends Controller
         if ($form->isValid()) {
             // TODO: Persist the comment entity
 
-         /*   return $this->redirect($this->generateUrl('AlmosBundle_question_show', array(
-                    'id' => $comment->getComment())) .
-                    'slug'  => $comment->getBlog()->getSlug())) .
-                    '#comment-' . $comment->getId()
-            ); */
+            $em = $this->getDoctrine()
+                ->getManager();
+            $em->persist($comment);
+            $em->flush();
 
-            return $this->redirect($this->generateUrl('BloggerBlogBundle_blog_show', array(
-                    'id'    => $comment->getBlog()->getId(),
-                    'slug'  => $comment->getBlog()->getSlug())) .
+            return $this->redirect($this->generateUrl('AlmosBundle_question_show', array(
+                    'id' => $comment->getBlog()->getId())) .
                 '#comment-' . $comment->getId()
+
             );
         }
 
@@ -60,13 +56,12 @@ class CommentController extends Controller
         ));
     }
 
-    protected function getBlog($question_id )
+    protected function getBlog($blog_id)
     {
         $em = $this->getDoctrine()
             ->getManager();
 
-        $blog = $em->getRepository('AlmosBundle:Question')->find($question_id);
-
+        $blog = $em->getRepository('AlmosBundle:Question')->find($blog_id);
 
         if (!$blog) {
             throw $this->createNotFoundException('Unable to find Blog post.');
@@ -74,7 +69,5 @@ class CommentController extends Controller
 
         return $blog;
     }
-
-
 
 }

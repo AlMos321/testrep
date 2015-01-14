@@ -3,6 +3,8 @@
 namespace AlmosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * @ORM\Entity(repositoryClass="AlmosBundle\Entity\Repository\CommentRepository")
@@ -59,6 +61,7 @@ class Comment
         $this->setApproved(true);
     }
 
+
     /**
      * Get id
      *
@@ -96,7 +99,7 @@ class Comment
      * Set comment
      *
      * @param string $comment
-     * @return Comment
+     *
      */
     public function setComment($comment)
     {
@@ -192,7 +195,7 @@ class Comment
      * @param \AlmosBundle\Entity\Question $blog
      * @return Comment
      */
-    public function setBlog(\AlmosBundle\Entity\Question $blog = null)
+    public function setBlog(\AlmosBundle\Entity\Question $blog /*= null*/)
     {
         $this->blog = $blog;
 
@@ -208,4 +211,15 @@ class Comment
     {
         return $this->blog;
     }
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('user', new NotBlank(array(
+            'message' => 'You must enter your name'
+        )));
+        $metadata->addPropertyConstraint('comment', new NotBlank(array(
+            'message' => 'You must enter a comment'
+        )));
+    }
+
 }

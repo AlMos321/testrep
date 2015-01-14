@@ -61,7 +61,6 @@ class Question
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $path;
-
     /**
      * @var string
      */
@@ -79,7 +78,6 @@ class Question
     {
         return $this->file;
     }
-
     /**
      * Sets file.
      *
@@ -89,29 +87,23 @@ class Question
     {
         $this->file = $file;
     }
-
-
     protected function getUploadDir()
     {
         //return 'uploads/blogs';
         return 'images';
     }
-
     protected function getUploadRootDir()
     {
         return __DIR__.'/../../../../web/'.$this->getUploadDir();
     }
-
     public function getWebPath()
     {
         return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
     }
-
     public function getAbsolutePath()
     {
         return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
     }
-
     /**
      * @ORM\PrePersist
      */
@@ -122,7 +114,6 @@ class Question
             $this->image = uniqid().'.'.$this->file->guessExtension();
         }
     }
-
     /**
      * @ORM\PostPersist
      */
@@ -131,15 +122,12 @@ class Question
         if (null === $this->file) {
             return;
         }
-
         // If there is an error when moving the file, an exception will
         // be automatically thrown by move(). This will properly prevent
         // the entity from being persisted to the database on error
         $this->file->move($this->getUploadRootDir(), $this->image);
-
         unset($this->file);
     }
-
     /**
      * @ORM\PostRemove
      */
@@ -149,7 +137,6 @@ class Question
             unlink($file);
         }
     }
-
 
 
 
