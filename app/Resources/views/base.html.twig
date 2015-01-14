@@ -17,7 +17,12 @@
 <body>
 
 
+
 <section id="wrapper">
+
+    <a href="{{ path('AlmosBundle_homepage', { '_locale': 'en' }) }}">ENG</a>
+    <a href="{{ path('AlmosBundle_homepage', { '_locale': 'uk' }) }}">UK</a>
+
 <div>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
@@ -50,11 +55,11 @@
             {% block navigation %}
                 <nav>
                     <ul class="navigation">
-                        <li><a href="{{ path('AlmosBundle_homepage') }}">Home</a></li>
-                        <li><a href="#">New question</a></li>
-                        <li><a href="{{ path('AlmosBundle_about') }}">About</a></li>
-                        <li><a href="{{ path('AlmosBundle_contact') }}">Contact</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="{{ path('AlmosBundle_homepage') }}">{{ 'menu.home'|trans({},"messages") }}</a></li>
+                        <li><a href="#">{{ 'menu.newquest'|trans({},"messages") }}</a></li>
+                        <li><a href="{{ path('AlmosBundle_about') }}">{{ 'menu.about'|trans({},"messages") }}</a></li>
+                        <li><a href="{{ path('AlmosBundle_contact') }}">{{ 'menu.contact'|trans({},"messages") }}</a></li>
+                        <li><a href="#">{{ 'menu.blog'|trans({},"messages") }}</a></li>
                     </ul>
                 </nav>
             {% endblock %}

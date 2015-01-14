@@ -10,6 +10,8 @@ _sonata_admin:
 almos_homepage:
     resource: "@AlmosBundle/Resources/config/routing.yml"
     prefix:   /
+    requirements:
+            _locale: en|uk
 
 # app/config/routing.yml
 fos_user:
