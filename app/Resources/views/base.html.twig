@@ -1,6 +1,6 @@
 <!-- app/Resources/views/base.html.twig -->
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta http-equiv="Content-Type" content="text/html"; charset=utf-8" />
     <title>{% block title %}Problem{% endblock %} - Problem</title>
@@ -13,40 +13,50 @@
         <link href="{{ asset('css/screen.css') }}" type="text/css" rel="stylesheet" />
     {% endblock %}
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+
+    <style>
+        hr {
+            border: none; /* Убираем границу */
+            background-color: red; /* Цвет линии */
+            color: red; /* Цвет линии для IE6-7 */
+            height: 2px; /* Толщина линии */
+        }
+    </style>
+
 </head>
 <body>
 
 
 
+
 <section id="wrapper">
+    <hr>
+    {% render controller("FOSUserBundle:Security:login") %}
 
-    <a href="{{ path('AlmosBundle_homepage', { '_locale': 'en' }) }}">ENG</a>
-    <a href="{{ path('AlmosBundle_homepage', { '_locale': 'uk' }) }}">UK</a>
 
-<div>
-    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-        <a href="{{ path('fos_user_security_logout') }}">
-            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-        </a>
-    {% else %}
-        <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-    {% endif %}
-</div>
+    <ul class="navigation">
+        <li>
+            <a href="{{ path(app.request.get('_route'),
+            app.request.get('_route_params')|merge({'_locale': 'uk'})) }}"
+                    ><h2 style="text-align: right">Українська</h2></a>
+        </li>
+        <li>
+            <a href="{{ path(app.request.get('_route'),
+            app.request.get('_route_params')|merge({'_locale': 'en'})) }}"
+                    ><h2 style="text-align: right">English</h2></a>
+        </li>
 
-{% for type, messages in app.session.flashbag.all() %}
-    {% for key, message in messages %}
-        <div class="flash-{{ type }}">
-            {{ message|trans({}, 'FOSUserBundle') }}
-        </div>
-    {% endfor %}
-{% endfor %}
 
-<div>
-    {% block fos_user_content %}
 
-    {% endblock fos_user_content %}
-</div>
+    </ul>
+
+    {#<a href="{{ path('AlmosBundle_homepage', { '_locale': 'en' }) }}">ENG</a>
+    <a href="{{ path('AlmosBundle_homepage', { '_locale': 'uk' }) }}">UK</a> #}
+
+
+
+<hr>
+
     </section>
 
 <section id="wrapper">

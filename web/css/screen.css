@@ -15,6 +15,8 @@ body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:bef
 #wrapper a { text-decoration: none; color: #e56c69; }
 #wrapper span.highlight { color: #F48A00; }
 
+
+
 #header { border-bottom: 1px solid #ccc; margin-bottom: 20px; }
 #header .top { border-bottom: 1px solid #ccc; margin-bottom: 10px; }
 #header ul.navigation { list-style: none; text-align: right; }

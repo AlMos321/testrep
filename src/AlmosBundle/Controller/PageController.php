@@ -40,12 +40,12 @@ class PageController extends Controller
             $form->bind($request);
 
             if ($form->isValid()) {
-                $message = \Swift_Message::newInstance()
-                    ->setSubject('Contact enquiry from symblog')
-                    ->setFrom('enquiries@symblog.co.uk')
-                    ->setTo($this->container->getParameter('almos.emails.contact_email'))
-                    ->setBody($this->renderView('AlmosBundle:Page:contactEmail.txt.twig', array('enquiry' => $enquiry)));
-                $this->get('mailer')->send($message);
+
+                $this->get('my_mailer')->Send('Contact enquiry from symblog', 'enquiries@symblog.co.uk', 'alexmoss@gmail.com',
+                    $this->renderView('AlmosBundle:Page:contactEmail.txt.twig', array('enquiry' => $enquiry)) ,$this->get('mailer')
+                    );
+
+              //  $this->get('mailer')->send($message);
 
                 $this->get('session')->getFlashBag()->add(
                     'blogger-notice',
@@ -54,6 +54,7 @@ class PageController extends Controller
                 // Редирект - это важно для предотвращения повторного ввода данных в форму,
                 // если пользователь обновил страницу.
                 return $this->redirect($this->generateUrl('AlmosBundle_contact'));
+
             }
         }
 
@@ -83,6 +84,12 @@ class PageController extends Controller
             'tags' => $tagWeights
         ));
 
+    }
+
+    public function changeLanguageAction()
+    {
+        $language = $this->getRequest()->get('language');
+        return $this->redirect($this->generateUrl('AlmosBundle_homepage', array('_locale' => $language)));
     }
 
 }
