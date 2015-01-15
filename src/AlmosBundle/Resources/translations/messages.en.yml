@@ -4,3 +4,21 @@ menu:
     about: About
     contact: Contact
     blog: Blog
+
+tag: Tag Cloud
+comment: Last comments
+comments: Comments
+addcomment: Add Comment
+registred: To leave a comment please register or login
+contine: Continue reading...
+nocomment: No comment
+notags: No tags
+nocomment_for_blog: No comment for this blog post
+can_comment: You can leave a comment
+
+ind_comments: Comments:
+ind_author:  Author
+ind_tsgs: Tags:
+
+title_1: The problem
+title_2: Have a problem?

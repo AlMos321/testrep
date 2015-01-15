@@ -66,8 +66,8 @@
         </div>
 
         <hgroup>
-            <h2>{% block blog_title %}<a href="{{ path('AlmosBundle_homepage') }}">The Problem</a>{% endblock %}</h2>
-            <h3>{% block blog_tagline %}<a href="{{ path('AlmosBundle_homepage') }}">Have a problem?</a>{% endblock %}</h3>
+            <h2>{% block blog_title %}<a href="{{ path('AlmosBundle_homepage') }}">{{ 'title_1'|trans({},"messages") }}</a>{% endblock %}</h2>
+            <h3>{% block blog_tagline %}<a href="{{ path('AlmosBundle_homepage') }}">{{ 'title_2'|trans({},"messages") }}</a>{% endblock %}</h3>
         </hgroup>
     </header>
 

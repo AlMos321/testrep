@@ -1,6 +1,24 @@
 menu:
-    home: Главная
-    newquest: Новый вопрос
-    about: О нас
-    contact: Контакты
+    home: Головка
+    newquest: Нове запитання
+    about: Про нас
+    contact: Контакти
     blog: Блог
+
+tag: Хмара тегів
+comment: Останній коментарій
+comments: Коментарії
+addcomment: Додати коментарій
+registred: Щоб додати коментарій будь ласка зареєструйтесь або залогінтесь
+contine: Продовжити перегляд...
+nocomment: Немає коментів
+notags: Нема тегів
+nocomment_for_blog: До цієї статті поки немає конетів. Залишити комент...
+can_comment: Ви можете залишить свій комент
+
+ind_comments: Коментарі:
+ind_author: Автор
+ind_tsgs: Теги:
+
+title_1: Проблема
+title_2: Маєте проблему?

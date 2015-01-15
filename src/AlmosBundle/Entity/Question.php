@@ -36,6 +36,11 @@ class Question
     protected $message;
 
     /**
+     * @ORM\Column(type="string", length=20)
+     */
+    protected $image;
+
+    /**
      * @ORM\Column(type="text")
      */
     protected $tags;
@@ -94,7 +99,7 @@ class Question
     }
     protected function getUploadRootDir()
     {
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return __DIR__ . '/../../../web/bundles/almos/'.$this->getUploadDir();
     }
     public function getWebPath()
     {
@@ -383,5 +388,51 @@ class Question
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return Question
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Question
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
     }
 }

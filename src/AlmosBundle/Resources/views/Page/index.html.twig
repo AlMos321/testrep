@@ -9,16 +9,16 @@
                 <h2><a href="{{ path('AlmosBundle_question_show', { 'id': question.id, 'slug': question.slug }) }}">{{ question.title }}</a></h2>
             </header>
 
-
+            <img src="{{ asset(['bundles/almos/images/', question.image]|join) }}" />
             <div class="snippet">
                 <p>{{ question.message(20) }}</p>
-                <p class="continue"><a href="{{ path('AlmosBundle_question_show', { 'id': question.id, 'slug': question.slug }) }}">Continue reading...</a></p>
+                <p class="continue"><a href="{{ path('AlmosBundle_question_show', { 'id': question.id, 'slug': question.slug }) }}">{{ 'contine'|trans({},"messages") }}</a></p>
             </div>
 
             <footer class="meta">
-                <p>Комментарии:  <a href="{{ path('AlmosBundle_question_show', { 'id': question.id, 'slug': question.slug }) }}#comments">{{ question.comments|length }}</p>
-                <p>Автор <span class="highlight">{{question.author}}</span>, {{ question.created|date('h:iA') }}.</p>
-                <p>Теги: <span class="highlight">{{ question.tags }}</span></p>
+                <p>{{ 'ind_comments'|trans({},"messages") }}  <a href="{{ path('AlmosBundle_question_show', { 'id': question.id, 'slug': question.slug }) }}#comments">{{ question.comments|length }}</p>
+                <p>{{ 'ind_author'|trans({},"messages") }} <span class="highlight">{{question.author}}</span>, {{ question.created|date('h:iA') }}.</p>
+                <p>{{ 'ind_tsgs'|trans({},"messages") }} <span class="highlight">{{ question.tags }}</span></p>
             </footer>
         </article>
     {% else %}
